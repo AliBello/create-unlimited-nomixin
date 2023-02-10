@@ -62,11 +62,8 @@ public class TrackEdge {
 			.normalize();
 	}
 
-	public boolean canTravelTo(TrackEdge other) {
-		if (isInterDimensional() || other.isInterDimensional())
-			return true;
-		Vec3 newDirection = other.getDirection(true);
-		return getDirection(false).dot(newDirection) > 7 / 8f;
+	public boolean canTravelTo(TrackEdge ignored) {
+		return true;
 	}
 
 	public double getLength() {

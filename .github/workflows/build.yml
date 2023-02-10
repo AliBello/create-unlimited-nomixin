@@ -1,0 +1,41 @@
+name: automated build
+on: [ pull_request, push ]
+
+jobs:
+    build:
+        if: "!startsWith(github.event.head_commit.message, '[skip]')"
+        strategy:
+            matrix:
+                java: [ 17 ]
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: steal code from myself
+              uses: actions/checkout@v2
+
+            - name: setup java ${{ matrix.java }}
+              uses: actions/setup-java@v1
+              with:
+                  java-version: ${{ matrix.java }}
+
+            - name: do the gradle
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.gradle/caches
+                      ~/.gradle/loom-cache
+                      ~/.gradle/wrapper
+                  key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}
+                  restore-keys: ${{ runner.os }}-gradle
+
+            - name: do the gradle part 2
+              run: chmod +x ./gradlew
+
+            - name: build (the thing actually happening)
+              run: ./gradlew build
+
+            - name: upload jars
+              uses: actions/upload-artifact@v2
+              with:
+                  name: create-ntl-artifacts
+                  path: build/libs/*

@@ -124,7 +124,7 @@ public class Train {
 	public int honkPitch;
 
 	public float accumulatedSteamRelease;
-	
+
 	int tickOffset;
 	double[] stress;
 
@@ -277,7 +277,7 @@ public class Train {
 		int carriageCount = carriages.size();
 		boolean stalled = false;
 		double maxStress = 0;
-		
+
 		if (carriageWaitingForChunks != -1)
 			distance = 0;
 
@@ -317,7 +317,7 @@ public class Train {
 						entries++;
 					}
 				}
-				
+
 
 				if (entries > 0)
 					actual = total / entries;
@@ -369,7 +369,7 @@ public class Train {
 					.getLeadingPoint();
 
 			double totalStress = derailed ? 0 : leadingStress + trailingStress;
-			
+
 			boolean first = i == 0;
 			boolean last = i == carriageCount - 1;
 			int carriageType = first ? last ? Carriage.BOTH : Carriage.FIRST : last ? Carriage.LAST : Carriage.MIDDLE;
@@ -400,7 +400,7 @@ public class Train {
 			runtime.tick(level);
 			status.endOfTrack();
 
-		} else if (maxStress > 4) {
+		} else if (maxStress > AllConfigs.SERVER.trains.trainStressAmount.get()) {
 			speed = 0;
 			navigation.cancelNavigation();
 			runtime.tick(level);
