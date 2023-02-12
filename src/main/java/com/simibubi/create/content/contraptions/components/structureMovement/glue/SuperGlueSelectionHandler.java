@@ -9,6 +9,7 @@ import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.AllSpecialTextures;
 import com.simibubi.create.CreateClient;
 import com.simibubi.create.content.contraptions.components.structureMovement.chassis.AbstractChassisBlock;
+import com.simibubi.create.foundation.config.AllConfigs;
 import com.simibubi.create.foundation.networking.AllPackets;
 import com.simibubi.create.foundation.utility.Components;
 import com.simibubi.create.foundation.utility.Lang;
@@ -114,7 +115,7 @@ public class SuperGlueSelectionHandler {
 			return;
 		}
 
-		if (firstPos != null && !firstPos.closerThan(hovered, 24)) {
+		if (firstPos != null && !firstPos.closerThan(hovered, AllConfigs.SERVER.kinetics.maxGluePlacementRange.get())) {
 			Lang.translate("super_glue.too_far")
 				.color(FAIL)
 				.sendStatus(player);
@@ -136,7 +137,7 @@ public class SuperGlueSelectionHandler {
 				int color = HIGHLIGHT;
 				String key = "super_glue.click_to_confirm";
 
-				if (!canReach) {
+				if (!canReach || !AllConfigs.SERVER.kinetics.glueMustBeConnected.get()) {
 					color = FAIL;
 					key = "super_glue.cannot_reach";
 				} else if (!canAfford) {

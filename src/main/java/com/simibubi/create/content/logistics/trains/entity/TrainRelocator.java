@@ -9,6 +9,8 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
+import com.simibubi.create.foundation.config.AllConfigs;
+
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableInt;
 
@@ -83,7 +85,7 @@ public class TrainRelocator {
 			return;
 
 		if (!player.position()
-			.closerThan(relocatingOrigin, 24) || player.isSteppingCarefully()) {
+			.closerThan(relocatingOrigin, AllConfigs.SERVER.trains.wrenchMoveDistance.get()) || player.isSteppingCarefully()) {
 			relocatingTrain = null;
 			player.displayClientMessage(Lang.translateDirect("train.relocate.abort")
 				.withStyle(ChatFormatting.RED), true);
@@ -150,7 +152,7 @@ public class TrainRelocator {
 		boolean direction = bezierSelection != null && lookAngle.dot(bezierSelection.direction()) < 0;
 		boolean result = relocate(relocating, mc.level, blockPos, hoveredBezier, direction, lookAngle, true);
 		if (!simulate && result) {
-			relocating.carriages.forEach(c -> c.forEachPresentEntity(e -> e.nonDamageTicks = 10));			
+			relocating.carriages.forEach(c -> c.forEachPresentEntity(e -> e.nonDamageTicks = 10));
 			AllPackets.channel.sendToServer(new TrainRelocationPacket(relocatingTrain, blockPos, hoveredBezier,
 				direction, lookAngle, relocatingEntityId));
 		}
