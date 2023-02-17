@@ -36,6 +36,8 @@ public class CKinetics extends ConfigBase {
 	public final ConfigInt maxChassisRange = i(16, 1, "maxChassisRange", Comments.maxChassisRange);
 	public final ConfigInt maxPistonPoles = i(64, 1, "maxPistonPoles", Comments.maxPistonPoles);
 	public final ConfigInt maxRopeLength = i(256, 1, "maxRopeLength", Comments.maxRopeLength);
+	public final ConfigInt maxGluePlacementRange = i(24, 1, "maxGluePlacementRange", Comments.maxGluePlacementRange);
+	public final ConfigBool glueMustBeConnected = b(true, "glueMustBeConnected", Comments.glueMustBeConnected);
 	public final ConfigInt maxCartCouplingLength = i(32, 1, "maxCartCouplingLength", Comments.maxCartCouplingLength);
 	public final ConfigBool survivalContraptionPickup = b(true, "survivalContraptionPickup", Comments.survivalContraptionPickup);
 	public final ConfigEnum<ContraptionMovementSetting> spawnerMovement =
@@ -89,6 +91,8 @@ public class CKinetics extends ConfigBase {
 		static String maxCartCouplingLength = "Maximum allowed distance of two coupled minecarts.";
 		static String moveItemsToStorage =
 			"Whether items mined or harvested by contraptions should be placed in their mounted storage.";
+		static String maxGluePlacementRange = "Maximum distance in blocks from where Glue can be placed.";
+		static String glueMustBeConnected = "Whether Glue can only be placed on blocks that are connected to each other.";
 		static String harvestPartiallyGrown = "Whether harvesters should break crops that aren't fully grown.";
 		static String harvesterReplants = "Whether harvesters should replant crops after harvesting.";
 		static String stats = "Configure speed/capacity levels for requirements and indicators.";

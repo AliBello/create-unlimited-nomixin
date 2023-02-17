@@ -11,6 +11,9 @@ public class CCuriosities extends ConfigBase {
 	public final ConfigInt maxExtendoGripActions = i(1000, 0, "maxExtendoGripActions", Comments.maxExtendoGripActions);
 	public final ConfigInt maxPotatoCannonShots = i(200, 0, "maxPotatoCannonShots", Comments.maxPotatoCannonShots);
 
+	public final ConfigInt singleExtendoGripReach = i(3, 1, 128, "singleExtendoGripReach", Comments.singleExtendoGripReach);
+	public final ConfigInt doubleExtendoGripReach = i(5, 1, 128, "doubleExtendoGripReach", Comments.doubleExtendoGripReach);
+
 //	public ConfigInt zapperUndoLogLength = i(10, 0, "zapperUndoLogLength", Comments.zapperUndoLogLength); NYI
 
 	@Override
@@ -32,6 +35,8 @@ public class CCuriosities extends ConfigBase {
 			"Amount of free Extendo Grip actions provided by one filled Copper Backtank. Set to 0 makes Extendo Grips unbreakable";
 		static String maxPotatoCannonShots =
 			"Amount of free Potato Cannon shots provided by one filled Copper Backtank. Set to 0 makes Potato Cannons unbreakable";
+		static String singleExtendoGripReach = "The maximum distance a single Extendo Grip can reach. Adds to your base reach.";
+		static String doubleExtendoGripReach = "The maximum distance two Extendo Grips can reach. Adds to your base reach.";
 //		static String zapperUndoLogLength = "The maximum amount of operations a blockzapper can remember for undoing. (0 to disable undo)";
 	}
 

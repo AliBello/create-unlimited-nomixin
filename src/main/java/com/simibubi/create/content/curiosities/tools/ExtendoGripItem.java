@@ -56,10 +56,10 @@ public class ExtendoGripItem extends Item {
 	public static final int MAX_DAMAGE = 200;
 
 	public static final AttributeModifier singleRangeAttributeModifier =
-		new AttributeModifier(UUID.fromString("7f7dbdb2-0d0d-458a-aa40-ac7633691f66"), "Range modifier", 3,
+		new AttributeModifier(UUID.fromString("7f7dbdb2-0d0d-458a-aa40-ac7633691f66"), "Range modifier", AllConfigs.SERVER.curiosities.singleExtendoGripReach.get(),
 			AttributeModifier.Operation.ADDITION);
 	public static final AttributeModifier doubleRangeAttributeModifier =
-		new AttributeModifier(UUID.fromString("8f7dbdb2-0d0d-458a-aa40-ac7633691f66"), "Range modifier", 5,
+		new AttributeModifier(UUID.fromString("8f7dbdb2-0d0d-458a-aa40-ac7633691f66"), "Range modifier", AllConfigs.SERVER.curiosities.doubleExtendoGripReach.get(),
 			AttributeModifier.Operation.ADDITION);
 
 	private static final Supplier<Multimap<Attribute, AttributeModifier>> rangeModifier = Suppliers.memoize(() ->
