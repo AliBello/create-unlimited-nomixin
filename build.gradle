@@ -33,7 +33,7 @@ ext.buildNumber = System.getenv('BUILD_NUMBER')
 
 group = 'com.simibubi.create'
 archivesBaseName = "create-${artifact_minecraft_version}"
-version = mod_version + (dev && buildNumber != null ? "-${buildNumber}" : '')
+version = mod_version + (dev && buildNumber != null ? "-${buildNumber}" : '') + "unlimited-" + unlimited_version
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
